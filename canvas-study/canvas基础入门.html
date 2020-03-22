@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="demo" width="400px" height="400px">
+
+    </canvas>
+
+</body>
+
+</html>
+<script>
+    /** @type {HTMLCanvasElement} */ //即可拥有canvas全部代码提示
+    //1.获取canvas元素
+    var canvas = document.getElementById('demo');
+    // 2.获取canvas上下文
+    var ctx = canvas.getContext('2d') //3d是"webgl"
+    //3.绘制
+    ctx.moveTo(100, 100); //将画笔移动到100 100处
+    ctx.lineTo(200, 100); //画画，但没有实线
+    ctx.lineTo(200, 200); //画画，但没有实线
+    ctx.stroke(); //填充画笔
+</script>

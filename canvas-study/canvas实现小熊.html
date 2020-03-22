@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="demo">
+    </canvas>
+</body>
+
+</html>
+<script>
+    /** @type {HTMLCanvasElement} */ //即可拥有canvas全部代码提示
+    var bearbox = document.getElementById('demo');
+    var bear = bearbox.getContext('2d');
+    bearbox.width = 500;
+    bearbox.height = 500;
+    bearbox.style.backgroundColor = 'gray';
+    bearbox.border = '1px solid #000';
+
+    var img = new Image();
+    img.src = '../Images/bear.png';
+    img.onload = function () {
+        var frameIndex = 0;
+        setInterval(() => {
+            //清除 之前的 图片
+            bear.clearRect(0, 0, bearbox.width, bearbox.height)
+            bear.drawImage(
+                img,
+                frameIndex * 200,
+                0,
+                200,
+                100,
+                200,
+                200,
+                200,
+                100
+            )
+            frameIndex++;
+            frameIndex %= 8;
+        }, 100);
+    }
+</script>

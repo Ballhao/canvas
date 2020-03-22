@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="line"></canvas>
+</body>
+
+</html>
+<script>
+    var data = [.2, .8, .4, .6, .7];
+    /** @type {HTMLCanvasElement} */ //即可拥有canvas全部代码提示
+    var line = document.getElementById('line');
+    var ctx = line.getContext('2d');
+    line.height = 700;
+    line.width = 700;
+    line.style.border = "1px solid #000";
+
+    var x0 = 200;
+    var y0 = 400;
+    //坐标轴的高度
+    var maxheight = 300;
+    //箭头的宽度
+    var arrywidth = 10
+    ctx.strokeStyle = 'blue';
+    //绘制x轴
+    ctx.beginPath();
+    ctx.moveTo(x0, y0);
+    ctx.lineTo(600, 400);
+    //绘制箭头
+    ctx.lineTo(600 - arrywidth, 400 - arrywidth);
+    ctx.moveTo(600, 400);
+    ctx.lineTo(600 - arrywidth, 400 + arrywidth);
+    ctx.stroke();
+    //绘制y轴
+    ctx.beginPath();
+    ctx.moveTo(x0, y0);
+    ctx.lineTo(x0, 100);
+    //绘制箭头
+    ctx.lineTo(x0 - arrywidth, 100 + 10);
+    ctx.moveTo(x0, 100);
+    ctx.lineTo(x0 + arrywidth, 100 + 10);
+    ctx.stroke();
+    //绘制折线
+    var xlength = 600 - 200;
+    var xwidth = xlength / (data.length + 1);
+    ctx.strokeStyle = "red";
+    ctx.beginPath();
+    for (var i = 0; i < data.length; i++) {
+        var x = x0 + (i + 1) * xwidth;
+        var y = y0 - data[i] * maxheight;
+        ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+</script>

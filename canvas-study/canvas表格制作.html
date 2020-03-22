@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="tb">
+    </canvas>
+</body>
+
+</html>
+<script>
+    (function () {
+        /** @type {HTMLCanvasElement} */ //即可拥有canvas全部代码提示
+        var tb = document.getElementById('tb');
+        var ctb = tb.getContext('2d');
+        tb.width = 600;
+        tb.height = 600;
+        tb.style.border = "1px solid #000"
+        //设置线宽
+        ctb.lineWidth = .1;
+        //每个方块的高
+        var oneh = 10;
+        for (var i = 0; i < tb.height / oneh; i++) {
+            //横向画线
+            ctb.moveTo(0, i * oneh);
+            ctb.lineTo(tb.width, i * oneh);
+            ctb.stroke();
+            //纵向画线
+            ctb.moveTo(i * oneh, 0);
+            ctb.lineTo(i * oneh, tb.height);
+
+        }
+        ctb.stroke();
+    })();
+</script>
